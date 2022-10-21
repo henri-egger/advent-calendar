@@ -4,9 +4,9 @@ import bg from "./img/winter-landscape.jpg";
 const Background = (props) => {
     return (
         <div
-            className='background'
+            className='background overflow-hidden'
             style={{backgroundImage: `url(${bg})`}}>
-            <div>
+            <div className='container'>
                 {props.children}
             </div>
         </div>
