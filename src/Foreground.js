@@ -9,7 +9,7 @@ const Foreground = (props) => {
 
         return (
             arr.map(
-                (e, i) => <Window key={i} day={i + 1} />
+                (e, i) => <Window modalShow={props.modalShow} key={i} day={i + 1} />
             )
         );
     }

@@ -2,8 +2,25 @@ import React, { useState } from "react";
 import Background from "./Background";
 import logo from "./img/moosbauer-logo.png";
 import Foreground from "./Foreground";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 const App = () => {
+    const [modalShow, setModalShow] = useState(false);
+    const modalContent = {
+        content: null,
+        type: null,
+        index: null,
+    };
+
+    const handleModalClose = () => setModalShow(false);
+    const handleModalShow = (loadedContent) => {
+        setModalShow(true);
+        modalContent.content = loadedContent.content;
+        modalContent.type = loadedContent.type;
+        modalContent.index = loadedContent.index;
+    };
+
     return (
         <>
             <Background>
@@ -13,46 +30,18 @@ const App = () => {
                     alt="logo"
                 ></img>
                 <div className="col">
-                    <Foreground />
+                    <Foreground modalShow={handleModalShow} />
                 </div>
             </Background>
 
-            <div
-                class="modal fade"
-                id="exampleModal"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">
-                                Modal title
-                            </h1>
-                            <button
-                                type="button"
-                                class="btn-close"
-                                data-bs-dismiss="modal"
-                                aria-label="Close"
-                            ></button>
-                        </div>
-                        <div class="modal-body">...</div>
-                        <div class="modal-footer">
-                            <button
-                                type="button"
-                                class="btn btn-secondary"
-                                data-bs-dismiss="modal"
-                            >
-                                Close
-                            </button>
-                            <button type="button" class="btn btn-primary">
-                                Save changes
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Modal show={modalShow} onHide={handleModalClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Window {modalContent.index}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Woohoo, you're reading this text in a modal!
+                </Modal.Body>
+            </Modal>
         </>
     );
 };
