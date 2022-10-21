@@ -3,17 +3,18 @@ import Background from "./Background";
 import logo from "./img/moosbauer-logo.png";
 import Foreground from "./Foreground";
 import Modal from "react-bootstrap/Modal";
+import { modalContent } from "./types";
 
 const App = () => {
     const [modalShow, setModalShow] = useState(false);
-    const modalContent = {
+    const modalContent: modalContent = {
         content: null,
         type: null,
         index: null,
-    };
+    }
 
     const handleModalClose = () => setModalShow(false);
-    const handleModalShow = (loadedContent) => {
+    const handleModalShow = (loadedContent: modalContent) => {
         setModalShow(true);
         modalContent.content = loadedContent.content;
         modalContent.type = loadedContent.type;

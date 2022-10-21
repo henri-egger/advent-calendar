@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import bg from "./img/winter-landscape.jpg";
 
-const Background = (props) => {
+type props = {
+    children: JSX.Element[]
+}
+
+const Background = (props: props) => {
     return (
         <div
             className='background overflow-hidden'

@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import loadContent from "./contentApi";
 
-const Window = (props) => {
+type props = {
+    modalShow: Function,
+    day: number,
+}
+
+const Window = (props: props) => {
     const [shouldWiggle, setShouldWiggle] = useState(false);
 
     const triggerWiggle = () => {

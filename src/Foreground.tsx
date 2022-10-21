@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import Window from "./Window.js"
+import Window from "./Window"
 
-const Foreground = (props) => {
+type props = {
+    modalShow: Function
+}
+
+const Foreground = (props: props) => {
 
     function renderWindows() {
         const num = 24;
