@@ -3,7 +3,6 @@ import Background from "./Background";
 import logo from "./img/moosbauer-logo.png";
 import Foreground from "./Foreground";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 
 const App = () => {
     const [modalShow, setModalShow] = useState(false);

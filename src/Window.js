@@ -6,14 +6,16 @@ const Window = (props) => {
 
     const triggerWiggle = () => {
         if (shouldWiggle) setShouldWiggle(false);
-        setTimeout(() => setShouldWiggle(true), 0)
-    }
+        setTimeout(() => setShouldWiggle(true), 0);
+    };
 
     const handleClick = () => {
         const currentDay = new Date().getDate();
 
-        if (currentDay === props.day) {
-            props.modalShow(loadContent());
+        if (/*currentDay === props.day*/ true) {
+            loadContent(props.day)
+                .then((res) => props.modalShow(res))
+                .catch((err) => console.error(err));
         } else {
             triggerWiggle();
         }
