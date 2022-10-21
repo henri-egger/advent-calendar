@@ -4,7 +4,7 @@ const Window = (props) => {
     return (
         <div className='col'>
             <div className='window p-4'>
-                {props.day}
+                <h3>{props.day}</h3>
             </div>
         </div>
     );

@@ -6,10 +6,8 @@ import Foreground from "./Foreground";
 const App = () => {
     return (
         <Background>
-            <div className="row justify-content-center py-3">
-                <img className="col-6 col-md-4 col-lg-3" src={logo} alt="logo"></img>
-            </div>
-            <div className="row justify-content-center">
+            <img className="col-6 col-md-4 col-lg-3 py-4" src={logo} alt="logo"></img>
+            <div className="col">
                 <Foreground />
             </div>
         </Background>

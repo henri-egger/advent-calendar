@@ -7,7 +7,9 @@ const Background = (props) => {
             className='background overflow-hidden'
             style={{backgroundImage: `url(${bg})`}}>
             <div className='container'>
-                {props.children}
+                <div className='row row-cols-1 justify-content-center'>
+                    {props.children}
+                </div>
             </div>
         </div>
     );

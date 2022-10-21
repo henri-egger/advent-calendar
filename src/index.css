@@ -33,4 +33,9 @@
     text-align: center;
     color: #fff;
     background-color: rgb(120, 7, 43);
+    cursor: pointer;
+}
+
+.window h3 {
+    margin: 0;
 }

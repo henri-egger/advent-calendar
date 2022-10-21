@@ -15,7 +15,7 @@ const Foreground = (props) => {
     }
 
     return (
-        <div className='row row-cols-6 g-4'>
+        <div className='row row-cols-4 row-cols-sm-6 g-4'>
             {renderWindows()}
         </div>
     );
