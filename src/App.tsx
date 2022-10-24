@@ -1,25 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Background from "./Background";
 import logo from "./img/moosbauer-logo.png";
 import Foreground from "./Foreground";
 import Modal from "react-bootstrap/Modal";
 import { modalContent } from "./types";
+import loadContent from "./contentApi";
 
 const App = () => {
     const [modalShow, setModalShow] = useState(false);
-    const modalContent: modalContent = {
+    
+    let [modalContent, setModalContent] = useState<modalContent>({
         content: null,
         type: null,
         index: null,
-    }
+    });
+
+    const currentDay = 1 //new Date().getDate();
+
+    useEffect(() => {
+        loadContent(currentDay)
+            .then((res) => setModalContent(res))
+            .catch((err) => console.error(err));
+    }, [])
 
     const handleModalClose = () => setModalShow(false);
-    const handleModalShow = (loadedContent: modalContent) => {
-        setModalShow(true);
-        modalContent.content = loadedContent.content;
-        modalContent.type = loadedContent.type;
-        modalContent.index = loadedContent.index;
-    };
+    const handleModalShow = () => setModalShow(true);
 
     return (
         <>
@@ -30,7 +35,7 @@ const App = () => {
                     alt="logo"
                 ></img>
                 <div className="col">
-                    <Foreground modalShow={handleModalShow} />
+                    <Foreground modalShow={handleModalShow} currentDay={currentDay} />
                 </div>
             </Background>
 
@@ -40,6 +45,7 @@ const App = () => {
                 </Modal.Header>
                 <Modal.Body>
                     Woohoo, you're reading this text in a modal!
+                    <img src={modalContent.content as string}></img>
                 </Modal.Body>
             </Modal>
         </>

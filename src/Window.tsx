@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import loadContent from "./contentApi";
 
 type props = {
     modalShow: Function,
     day: number,
+    currentDay: number,
 }
 
 const Window = (props: props) => {
@@ -15,12 +15,9 @@ const Window = (props: props) => {
     };
 
     const handleClick = () => {
-        const currentDay = new Date().getDate();
-
-        if (/*currentDay === props.day*/ true) {
-            loadContent(props.day)
-                .then((res) => props.modalShow(res))
-                .catch((err) => console.error(err));
+        
+        if (props.currentDay === props.day) {
+            props.modalShow(props.day)
         } else {
             triggerWiggle();
         }
