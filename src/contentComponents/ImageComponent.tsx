@@ -4,7 +4,7 @@ type props = {
 };
 
 const ImageComponent = (props: props) => {
-    return <img src={props.data.url}></img>;
+    return <img src={props.data.url} alt="Advent"></img>;
 };
 
 export default ImageComponent;

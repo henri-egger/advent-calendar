@@ -8,9 +8,10 @@ import loadContentComponent from "./contentApi";
 const App = () => {
     const [modalShow, setModalShow] = useState(false);
     const [contentComponent, setContentComponent] = useState<JSX.Element>();
-
+    
     const currentDay = new Date();
 
+    // Async loading content component of current day into state of app component
     useEffect(() => {
         loadContentComponent(currentDay)
             .then((res) => setContentComponent(res))

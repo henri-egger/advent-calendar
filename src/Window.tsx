@@ -8,13 +8,17 @@ type props = {
 
 const Window = (props: props) => {
     const [shouldWiggle, setShouldWiggle] = useState(false);
-
+    	
+    // Trigger for wiggle animation
     const triggerWiggle = () => {
         if (shouldWiggle) setShouldWiggle(false);
         setTimeout(() => setShouldWiggle(true), 0);
     };
 
-    const day = new Date(2022, 11, props.index);
+    // Creating a new date with current year, month december and day equal to index of window,
+    // then compairing day and month of current day and the day of the index
+    const december = 11;
+    const day = new Date(new Date().getFullYear(), december, props.index);
     const handleClick = () => {
         if (
             props.currentDay.getDate() === day.getDate() &&

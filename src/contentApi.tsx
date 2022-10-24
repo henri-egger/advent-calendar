@@ -2,8 +2,8 @@ import ImageComponent from "./contentComponents/ImageComponent";
 import VideoComponent from "./contentComponents/VideoComponent";
 import MDComponent from "./contentComponents/MDComponent";
 
-// async function toDataURL(data: Response): Promise<string> {
-//     const blob = await data.blob();
+// Helper function to convert a blob to base64
+// async function toDataURL(blob: Blob): Promise<string> {
 //     return new Promise((resolve, _) => {
 //         const reader = new FileReader();
 //         reader.onloadend = () => resolve(reader.result as string);
@@ -41,6 +41,7 @@ export default async function loadContentComponent(
 ): Promise<JSX.Element> {
     const index = currentDay.getDate();
 
+    // Fetching content info (urls)
     const contentInfoRes = await fetch(contentInfoURL, contentInfoOptions);
     const contentInfo: { [key: string]: string } = await contentInfoRes.json();
 
@@ -50,9 +51,11 @@ export default async function loadContentComponent(
     const contentURL =
         "content/" + index.toString() + "/" + contentInfo[index.toString()];
 
+    // Fetching the actual content
     const contentData = await fetch(contentURL, contentOptions);
     const contentType = contentData.headers.get("Content-Type") as string;
 
+    // Selecting the corrisponding component renderer from the above dict
     const renderContentComponent =
         contentRenderers[contentType];
 
