@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 type props = {
-    modalShow: Function,
-    day: number,
-    currentDay: number,
-}
+    modalShow: Function;
+    index: number;
+    currentDay: Date;
+};
 
 const Window = (props: props) => {
     const [shouldWiggle, setShouldWiggle] = useState(false);
@@ -14,10 +14,13 @@ const Window = (props: props) => {
         setTimeout(() => setShouldWiggle(true), 0);
     };
 
+    const day = new Date(2022, 11, props.index);
     const handleClick = () => {
-        
-        if (props.currentDay === props.day) {
-            props.modalShow(props.day)
+        if (
+            props.currentDay.getDate() === day.getDate() &&
+            props.currentDay.getMonth() === day.getMonth()
+        ) {
+            props.modalShow();
         } else {
             triggerWiggle();
         }
@@ -29,7 +32,7 @@ const Window = (props: props) => {
                 className={`window p-4 ${shouldWiggle ? "wiggle" : ""}`}
                 onClick={() => handleClick()}
             >
-                <h3>{props.day}</h3>
+                <h3>{props.index}</h3>
             </div>
         </div>
     );
