@@ -11,7 +11,7 @@ import MDComponent from "./contentComponents/MDComponent";
 //       });
 // }
 
-const contentComponentConstructors: { [key: string]: Function } = {
+const contentRenderers: { [key: string]: Function } = {
     "image/gif":        (data: Response, index: number) => <ImageComponent data={data} index={index} />,
     "image/jpeg":       (data: Response, index: number) => <ImageComponent data={data} index={index} />,
     "image/png":        (data: Response, index: number) => <ImageComponent data={data} index={index} />,
@@ -19,7 +19,7 @@ const contentComponentConstructors: { [key: string]: Function } = {
     "text/markdown":    (data: Response, index: number) => <MDComponent    data={data} index={index} />,
 }
 
-const validTypes: string[] = Object.keys(contentComponentConstructors);
+const validTypes: string[] = Object.keys(contentRenderers);
 
 const contentInfoURL = "content/content-info.json";
 const contentInfoOptions: RequestInit = {
@@ -36,7 +36,7 @@ const contentOptions: RequestInit = {
     },
 };
 
-export default async function loadContent(
+export default async function loadContentComponent(
     currentDay: Date
 ): Promise<JSX.Element> {
     const index = currentDay.getDate();
@@ -46,15 +46,15 @@ export default async function loadContent(
 
     if (!contentInfo[index.toString()])
         throw new Error(`Content URL for day ${index} not specified`);
+
     const contentURL =
         "content/" + index.toString() + "/" + contentInfo[index.toString()];
 
     const contentData = await fetch(contentURL, contentOptions);
     const contentType = contentData.headers.get("Content-Type") as string;
 
-    console.log(contentData);
+    const renderContentComponent =
+        contentRenderers[contentType];
 
-    const contentComponentConstructor =
-        contentComponentConstructors[contentType];
-    return contentComponentConstructor(contentData);
+    return renderContentComponent(contentData);
 }

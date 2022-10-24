@@ -3,7 +3,7 @@ import Background from "./Background";
 import logo from "./img/moosbauer-logo.png";
 import Foreground from "./Foreground";
 import Modal from "react-bootstrap/Modal";
-import loadContent from "./contentApi";
+import loadContentComponent from "./contentApi";
 
 const App = () => {
     const [modalShow, setModalShow] = useState(false);
@@ -12,7 +12,7 @@ const App = () => {
     const currentDay = new Date();
 
     useEffect(() => {
-        loadContent(currentDay)
+        loadContentComponent(currentDay)
             .then((res) => setContentComponent(res))
             .catch((err) => console.error(err));
     }, []);
