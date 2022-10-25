@@ -21,8 +21,9 @@ const Window = (props: props) => {
     const day = new Date(new Date().getFullYear(), december, props.index);
     const handleClick = () => {
         if (
-            props.currentDay.getDate() === day.getDate() &&
-            props.currentDay.getMonth() === day.getMonth()
+            // props.currentDay.getDate() === day.getDate() &&
+            // props.currentDay.getMonth() === day.getMonth()
+            true // For testing
         ) {
             props.modalShow();
         } else {

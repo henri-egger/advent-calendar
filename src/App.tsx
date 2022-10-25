@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Background from "./Background";
 import logo from "./img/moosbauer-logo.png";
 import Foreground from "./Foreground";
@@ -8,15 +8,15 @@ import loadContentComponent from "./contentApi";
 const App = () => {
     const [modalShow, setModalShow] = useState(false);
     const [contentComponent, setContentComponent] = useState<JSX.Element>();
-    
-    const currentDay = new Date();
+
+    const currentDay = useMemo(() => new Date(), []);
 
     // Async loading content component of current day into state of app component
     useEffect(() => {
         loadContentComponent(currentDay)
             .then((res) => setContentComponent(res))
             .catch((err) => console.error(err));
-    }, []);
+    }, [currentDay]);
 
     const handleModalClose = () => setModalShow(false);
     const handleModalShow = () => setModalShow(true);
@@ -37,14 +37,14 @@ const App = () => {
                 </div>
             </Background>
 
-            <Modal show={modalShow} onHide={handleModalClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>
-                        Window {contentComponent?.props.index}
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    Woohoo, you're reading this text in a modal!
+            <Modal
+                show={modalShow}
+                onHide={handleModalClose}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <Modal.Body className="overflow-hidden">
                     {contentComponent}
                 </Modal.Body>
             </Modal>
