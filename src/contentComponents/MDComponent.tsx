@@ -12,16 +12,18 @@ const MDComponent = (props: props) => {
 
     // Parsing the markdown plain text to html and sanitize it
     useEffect(() => {
-        props.data.text()
+        props.data
+            .clone()
+            .text()
             .then((res) => {
                 const html = marked.parse(res);
                 setSanitized(sanitize(html));
             })
             .catch((err) => console.error(err));
-    }, [props.data])
+    }, [props.data]);
 
     return (
-        <div dangerouslySetInnerHTML={{__html: sanitized as string}}></div>
+        <div dangerouslySetInnerHTML={{ __html: sanitized as string }}></div>
     );
 };
 
