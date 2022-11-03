@@ -7,7 +7,7 @@ type props = {
 const Background = (props: props) => {
     return (
         <div
-            className="background overflow-hidden"
+            className="background fixed-top overflow-auto"
             style={{ backgroundImage: `url(${bg})` }}
         >
             <div className="container">

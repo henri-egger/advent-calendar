@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type props = {
     modalShow: Function;
@@ -8,7 +8,8 @@ type props = {
 
 const Window = (props: props) => {
     const [shouldWiggle, setShouldWiggle] = useState(false);
-    	
+    const [isOpen, setIsOpen] = useState(false);
+
     // Trigger for wiggle animation
     const triggerWiggle = () => {
         if (shouldWiggle) setShouldWiggle(false);
@@ -26,18 +27,32 @@ const Window = (props: props) => {
             true // For testing
         ) {
             props.modalShow();
+            setIsOpen(true);
         } else {
             triggerWiggle();
         }
     };
 
+    // Opens all doors before current date if december
+    useEffect(() => {
+        setIsOpen(
+            // props.currentDay.getMonth() === 11
+            props.index < props.currentDay.getDate()
+            // : false
+        );
+    }, [props]);
+
     return (
-        <div className="col">
-            <div
-                className={`window p-4 ${shouldWiggle ? "wiggle" : ""}`}
-                onClick={() => handleClick()}
-            >
-                <h3>{props.index}</h3>
+        <div className="col px-xl-4">
+            <div className="back-window">
+                <div
+                    className={`window p-4 ${isOpen ? "open" : ""} ${
+                        shouldWiggle && !isOpen ? "wiggle" : ""
+                    }`}
+                    onClick={() => handleClick()}
+                >
+                    <h3>{props.index}</h3>
+                </div>
             </div>
         </div>
     );

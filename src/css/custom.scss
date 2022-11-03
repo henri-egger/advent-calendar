@@ -8,13 +8,49 @@
 
 .window {
     text-align: center;
-    color: #fff;
-    background-color: rgb(120, 7, 43);
     cursor: pointer;
-
     h3 {
         margin: 0;
     }
+
+    color: #fff;
+    background-color: rgb(120, 7, 43);
+    border-radius: 3px;
+
+    transform-origin: left;
+    transition: all 0.5s ease-in-out;
+}
+
+.window.open {
+    /*prespectiv creates the door open effect*/
+    transform: perspective(1200px) translateZ(0px) translateX(0px)
+        translateY(0px) rotateY(-115deg);
+    box-shadow: 5px 0px 12px 2px rgb(0 0 0 / 20%);
+    color: #ffffff88;
+}
+
+.back-window {
+    background-color: #333;
+    border-radius: 3px;
+}
+
+.door {
+    background-color: brown;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 200px;
+    height: 300px;
+
+    transform-origin: left;
+    /*Speed of the Door animation*/
+    transition: all 0.5s ease-in-out;
+}
+
+.doorOpen {
+    /*prespectiv creates the door open effect*/
+    transform: perspective(1200px) translateZ(0px) translateX(0px)
+        translateY(0px) rotateY(-105deg);
 }
 
 .wiggle {
