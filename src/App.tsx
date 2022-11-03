@@ -44,7 +44,7 @@ const App = () => {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
-                <Modal.Body className="p-0 container-fluid">
+                <Modal.Body className="p-0">
                     <div className="row">{contentComponent}</div>
                 </Modal.Body>
             </Modal>

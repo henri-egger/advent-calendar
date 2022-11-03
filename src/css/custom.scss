@@ -57,7 +57,17 @@
         left: 0;
         width: 100%;
         height: 100%;
+
+        @media screen and (max-width: 576px) {
+            width: 90%;
+            transform: translateX(5%);
+        }
     }
+}
+
+.modal-content {
+    background-color: transparent;
+    border: none;
 }
 
 // Bootstrap Modifications

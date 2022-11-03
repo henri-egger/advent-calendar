@@ -21,13 +21,13 @@ const contentRenderers: Record<string, Function> = {
     "image/png": (data: Response, index: number) => (
         <ImageComponent data={data} index={index} />
     ),
-    "text/plain": (data: Response, index: number) => (
+    "application/json": (data: Response, index: number) => (
         <VideoComponent data={data} index={index} />
     ),
     "text/markdown": (data: Response, index: number) => (
         <MDComponent data={data} index={index} />
     ),
-    "text/plain; charset=UTF-8": (data: Response, index: number) => (
+    "application/json; charset=UTF-8": (data: Response, index: number) => (
         <VideoComponent data={data} index={index} />
     ),
     "text/markdown; charset=UTF-8": (data: Response, index: number) => (
