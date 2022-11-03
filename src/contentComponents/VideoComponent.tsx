@@ -27,15 +27,18 @@ const VideoComponent = (props: props) => {
     }, [props.data, URLRegex]);
 
     return (
-        <iframe
-            width="887"
-            height="499"
-            src={URL}
-            title="Advent calendar video"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-        ></iframe>
+        <div className="iframe-container">
+            <iframe
+                width=""
+                height=""
+                src={URL}
+                title="Advent calendar video"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="iframe-video"
+            ></iframe>
+        </div>
     );
 };
 
