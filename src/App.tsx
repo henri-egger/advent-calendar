@@ -30,7 +30,7 @@ const App = () => {
                     src={logo}
                     alt="logo"
                 ></img>
-                <div className="col">
+                <div className="col pb-5">
                     <Foreground
                         modalShow={handleModalShow}
                         currentDay={currentDay}
