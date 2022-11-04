@@ -22,9 +22,8 @@ const Window = (props: props) => {
     const day = new Date(new Date().getFullYear(), december, props.index);
     const handleClick = () => {
         if (
-            // props.currentDay.getDate() === day.getDate() &&
-            // props.currentDay.getMonth() === day.getMonth()
-            true // For testing
+            props.currentDay.getDate() === day.getDate() &&
+            props.currentDay.getMonth() === day.getMonth()
         ) {
             props.modalShow();
             setIsOpen(true);
@@ -44,11 +43,13 @@ const Window = (props: props) => {
 
     return (
         <div className="col px-xl-4">
-            <div className="back-window">
+            <div
+                className={`back-window ${
+                    shouldWiggle && !isOpen ? "wiggle" : ""
+                }`}
+            >
                 <div
-                    className={`window p-4 ${isOpen ? "open" : ""} ${
-                        shouldWiggle && !isOpen ? "wiggle" : ""
-                    }`}
+                    className={`window p-4 ${isOpen ? "open" : ""}`}
                     onClick={() => handleClick()}
                 >
                     <h3>{props.index}</h3>

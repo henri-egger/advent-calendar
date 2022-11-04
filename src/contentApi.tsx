@@ -55,8 +55,7 @@ const contentOptions: RequestInit = {
 export default async function loadContentComponent(
     currentDay: Date
 ): Promise<JSX.Element> {
-    // const index = currentDay.getDate();
-    const index = 1;
+    const index = currentDay.getDate();
 
     // Fetching content info (urls)
     const contentInfoRes = await fetch(contentInfoURL, contentInfoOptions);

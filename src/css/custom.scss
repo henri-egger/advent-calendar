@@ -26,12 +26,16 @@
     transform: perspective(1200px) translateZ(0px) translateX(0px)
         translateY(0px) rotateY(-115deg);
     box-shadow: 5px 0px 12px 2px rgb(0 0 0 / 20%);
-    color: #ffffff88;
+    color: transparent;
 }
 
 .back-window {
-    background-color: #333;
+    background-color: #ffe682;
     border-radius: 3px;
+}
+
+.back-window:has(> .window.open) {
+    box-shadow: 0 0 15px #ffe682;
 }
 
 .door {
