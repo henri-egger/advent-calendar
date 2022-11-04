@@ -47,6 +47,7 @@ const Window = (props: props) => {
                 className={`back-window ${
                     shouldWiggle && !isOpen ? "wiggle" : ""
                 }`}
+                onClick={() => handleClick()}
             >
                 <div
                     className={`window p-4 ${isOpen ? "open" : ""}`}
