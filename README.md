@@ -2,7 +2,7 @@
 
 Digital advent calendar, made for [Camping Moosbauer](https://www.moosbauer.com/de).
 
-Available in testing at [advent-calendar.pages.dev](https://advent-calendar.pages.dev), in production at [moosbauer.com/de/t/downloads/hausprospekt](https://www.moosbauer.com/de/t/downloads/hausprospekt).
+Available in testing at [advent-calendar.pages.dev](https://advent-calendar.pages.dev).
 
 Made using Create React App with Typescript.
 
