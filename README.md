@@ -4,7 +4,7 @@ Digital advent calendar, made for [Camping Moosbauer](https://www.moosbauer.com/
 
 Available in testing at [advent-calendar.pages.dev](https://advent-calendar.pages.dev).
 
-Made using Create React App with Typescript.
+Made with React, Vite and TypeScript.
 
 ## Local development
 
@@ -29,7 +29,7 @@ npm install
 Run app
 
 ```bash
-npm start
+npm run dev
 ```
 
 The react app will start in development mode and served at [http://localhost:3000](http://localhost:3000)
