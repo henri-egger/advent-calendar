@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { marked } from "marked";
-import { sanitize } from "dompurify";
+import sanitizer from "dompurify";
 
 type props = {
     data: Response;
@@ -17,7 +17,7 @@ const MDComponent = (props: props) => {
             .text()
             .then((res) => {
                 const html = marked.parse(res);
-                setSanitized(sanitize(html));
+                setSanitized(sanitizer.sanitize(html));
             })
             .catch((err) => console.error(err));
     }, [props.data]);

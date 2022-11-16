@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import Background from "./Background";
-import logo from "./img/moosbauer-logo.png";
+import logo from "./assets/img/moosbauer-logo.png";
 import Foreground from "./Foreground";
 import Modal from "react-bootstrap/Modal";
 import loadContentComponent from "./contentApi";

@@ -1,4 +1,4 @@
-import bg from "./img/winter-landscape.jpg";
+import bg from "./assets/img/winter-landscape.jpg";
 
 type props = {
     children: JSX.Element[];
