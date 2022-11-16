@@ -46,14 +46,16 @@ const Window = (props: props) => {
             <div
                 className={`back-window ${
                     shouldWiggle && !isOpen ? "wiggle" : ""
-                }`}
+                } rounded-1 bg-secondary cursor-pointer`}
                 onClick={() => handleClick()}
             >
                 <div
-                    className={`window p-4 ${isOpen ? "open" : ""}`}
+                    className={`window p-4 ${
+                        isOpen ? "open" : ""
+                    } text-center text-white rounded-1 bg-primary`}
                     onClick={() => handleClick()}
                 >
-                    <h3>{props.index}</h3>
+                    <h3 className="m-0">{props.index}</h3>
                 </div>
             </div>
         </div>
