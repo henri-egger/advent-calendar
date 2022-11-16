@@ -35,9 +35,9 @@ const Window = (props: props) => {
     // Opens all doors before current date if december
     useEffect(() => {
         setIsOpen(
-            // props.currentDay.getMonth() === 11
-            props.index < props.currentDay.getDate()
-            // : false
+            props.currentDay.getMonth() === 11
+                ? props.index < props.currentDay.getDate()
+                : false
         );
     }, [props]);
 
