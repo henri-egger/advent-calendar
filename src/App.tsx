@@ -3,6 +3,7 @@ import Background from "./Background";
 import logo from "./assets/img/moosbauer-logo.png";
 import Foreground from "./Foreground";
 import Modal from "react-bootstrap/Modal";
+import CookieConsent from "./cookieconsent/Cookieconsent";
 import loadContentComponent from "./contentApi";
 
 const App = () => {
@@ -57,6 +58,8 @@ const App = () => {
                     <div className="row">{contentComponent}</div>
                 </Modal.Body>
             </Modal>
+
+            <CookieConsent />
         </>
     );
 };
