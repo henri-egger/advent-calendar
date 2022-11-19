@@ -91,6 +91,20 @@ export default {
                             enabled: false,
                             readonly: false,
                         },
+                        cookie_table: [
+                            {
+                                col1: "_pk_id.2.1fff",
+                                col2: "/",
+                                col3: "6 months",
+                                col4: "Permanent cookie",
+                            },
+                            {
+                                col1: "_pk_ses.2.1fff",
+                                col2: "/",
+                                col3: "30 minutes",
+                                col4: "Permanent cookie",
+                            },
+                        ],
                     },
                     {
                         title: "More information",

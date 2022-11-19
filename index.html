@@ -10,6 +10,27 @@
             content="Advent calendar | Camping Moosbauer"
         />
         <link rel="manifest" href="/manifest.json" />
+        <!-- Matomo -->
+        <script type="text/plain" data-cookiecategory="analytics">
+            var _paq = (window._paq = window._paq || []);
+            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+            _paq.push(["setVisitorCookieTimeout", "15768000"]);
+            _paq.push(["trackPageView"]);
+            _paq.push(["enableLinkTracking"]);
+            (function () {
+                var u = "https://henriegger.matomo.cloud/";
+                _paq.push(["setTrackerUrl", u + "matomo.php"]);
+                _paq.push(["setSiteId", "2"]);
+                var d = document,
+                    g = d.createElement("script"),
+                    s = d.getElementsByTagName("script")[0];
+                g.async = true;
+                g.src = "//cdn.matomo.cloud/henriegger.matomo.cloud/matomo.js";
+                s.parentNode.insertBefore(g, s);
+            })();
+        </script>
+        <!-- End Matomo Code -->
+
         <title>Advent Calendar | Camping Moosbauer</title>
     </head>
     <body>
