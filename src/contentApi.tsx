@@ -1,6 +1,7 @@
 import ImageComponent from "./contentComponents/ImageComponent";
 import VideoComponent from "./contentComponents/VideoComponent";
 import MDComponent from "./contentComponents/MDComponent";
+import { cookie } from "./cookieconsent/types";
 
 // Helper function to convert a blob to base64DataURL
 // async function toDataURL(blob: Blob): Promise<string> {
@@ -11,28 +12,25 @@ import MDComponent from "./contentComponents/MDComponent";
 //       });
 // }
 
-const contentRenderers: Record<string, Function> = {
-    "image/gif": (data: Response, index: number) => (
-        <ImageComponent data={data} index={index} />
-    ),
-    "image/jpeg": (data: Response, index: number) => (
-        <ImageComponent data={data} index={index} />
-    ),
-    "image/png": (data: Response, index: number) => (
-        <ImageComponent data={data} index={index} />
-    ),
-    "application/json": (data: Response, index: number) => (
-        <VideoComponent data={data} index={index} />
-    ),
-    "text/markdown": (data: Response, index: number) => (
-        <MDComponent data={data} index={index} />
-    ),
-    "application/json; charset=UTF-8": (data: Response, index: number) => (
-        <VideoComponent data={data} index={index} />
-    ),
-    "text/markdown; charset=UTF-8": (data: Response, index: number) => (
-        <MDComponent data={data} index={index} />
-    ),
+// prettier-ignore
+const contentRenderers: Record<
+    string,
+    (data: Response, index: number, cookie: cookie) => JSX.Element
+> = {
+    "image/gif":
+        (data, index) => <ImageComponent data={data} index={index} />,
+    "image/jpeg":
+        (data, index) => <ImageComponent data={data} index={index} />,
+    "image/png":
+        (data, index) => <ImageComponent data={data} index={index} />,
+    "text/markdown":
+        (data, index) => <MDComponent data={data} index={index} />,
+    "text/markdown; charset=UTF-8":
+        (data, index) => <MDComponent data={data} index={index} />,
+    "application/json": 
+        (data, index, cookie) => <VideoComponent data={data} index={index} cookie={cookie} />,
+    "application/json; charset=UTF-8": 
+        (data, index, cookie) => <VideoComponent data={data} index={index} cookie={cookie} />,
 };
 
 const validTypes: string[] = Object.keys(contentRenderers);
@@ -53,7 +51,8 @@ const contentOptions: RequestInit = {
 };
 
 export default async function loadContentComponent(
-    currentDay: Date
+    currentDay: Date,
+    cookie: cookie
 ): Promise<JSX.Element> {
     const index = currentDay.getDate();
 
@@ -74,5 +73,5 @@ export default async function loadContentComponent(
     // Selecting the corrisponding component renderer from the above record
     const renderContentComponent = contentRenderers[contentType];
 
-    return renderContentComponent(contentData);
+    return renderContentComponent(contentData, index, cookie);
 }

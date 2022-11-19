@@ -5,8 +5,10 @@ import Foreground from "./Foreground";
 import Modal from "react-bootstrap/Modal";
 import CookieConsent from "./cookieconsent/Cookieconsent";
 import loadContentComponent from "./contentApi";
+import { cookie } from "./cookieconsent/types";
 
 const App = () => {
+    const [cookie, setCookie] = useState<cookie>({});
     const [modalShow, setModalShow] = useState(false);
     const [contentComponent, setContentComponent] = useState<JSX.Element>();
 
@@ -15,10 +17,10 @@ const App = () => {
 
     // Async loading content component of current day into state of app component
     useEffect(() => {
-        loadContentComponent(currentDay)
+        loadContentComponent(currentDay, cookie)
             .then((res) => setContentComponent(res))
             .catch((err) => console.error(err));
-    }, [currentDay]);
+    }, [currentDay, cookie]);
 
     const handleModalClose = () => setModalShow(false);
     const handleModalShow = () => setModalShow(true);
@@ -59,7 +61,7 @@ const App = () => {
                 </Modal.Body>
             </Modal>
 
-            <CookieConsent />
+            <CookieConsent setCookie={setCookie} />
         </>
     );
 };

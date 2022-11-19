@@ -31,7 +31,7 @@ export default {
             consent_modal: {
                 title: "I use cookies",
                 description:
-                    'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only upon approval. <a aria-label="Cookie policy" class="cc-link" href="#">Read more</a>',
+                    'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only upon approval. <a aria-label="Cookie policy" target="_blank" class="cc-link" href="https://www.moosbauer.com/de/f/cookies">Read more</a>',
                 primary_btn: {
                     text: "Accept",
                     role: "accept_all", // 'accept_selected' or 'accept_all'
@@ -50,24 +50,37 @@ export default {
                     { col1: "Name" },
                     { col2: "Domain" },
                     { col3: "Expiration" },
-                    { col4: "Description" },
-                    { col5: "Type" },
+                    { col4: "Type" },
                 ],
                 blocks: [
                     {
                         title: "Cookie usage",
                         description:
-                            "I use cookies to ensure the basic functionalities of the website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want.",
+                            "We use cookies to ensure the basic functionalities of the website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want.",
                     },
                     {
                         title: "Strictly necessary cookies",
                         description:
-                            "These cookies are essential for the proper functioning of my website. Without these cookies, the website would not work properly.",
+                            "These cookies are essential for the proper functioning of the website. Without these cookies, the website would not work properly.",
                         toggle: {
                             value: "necessary",
                             enabled: true,
                             readonly: true,
                         },
+                        cookie_table: [
+                            {
+                                col1: "VISITOR_INFO1_LIVE",
+                                col2: "youtube.com",
+                                col3: "6 months",
+                                col4: "Permanent cookie",
+                            },
+                            {
+                                col1: "YSC",
+                                col2: "youtube.com",
+                                col3: "/",
+                                col4: "Session cookie",
+                            },
+                        ],
                     },
                     {
                         title: "Analytics cookies",
@@ -78,28 +91,11 @@ export default {
                             enabled: false,
                             readonly: false,
                         },
-                        cookie_table: [
-                            {
-                                col1: "^_ga",
-                                col2: "google.com",
-                                col3: "2 years",
-                                col4: "description ...",
-                                col5: "Permanent cookie",
-                                is_regex: true,
-                            },
-                            {
-                                col1: "_gid",
-                                col2: "google.com",
-                                col3: "1 day",
-                                col4: "description ...",
-                                col5: "Permanent cookie",
-                            },
-                        ],
                     },
                     {
                         title: "More information",
                         description:
-                            'For any queries in relation to my policy on cookies and your choices, please <a class="cc-link" href="#yourwebsite">contact me</a>.',
+                            'For any question in relation to our policy on cookies and your choices, please <a class="cc-link" target="_blank" href="https://www.moosbauer.com/de">contact me</a>.',
                     },
                 ],
             },

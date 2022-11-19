@@ -1,11 +1,20 @@
 import { useEffect, useState, useMemo } from "react";
+import { cookie } from "../cookieconsent/types";
 
 type props = {
     data: Response;
     index: number;
+    cookie: cookie;
 };
 
 const VideoComponent = (props: props) => {
+    const allowShow = useMemo<boolean>(
+        () =>
+            props.cookie.categories
+                ? props.cookie.categories.includes("necessary")
+                : false,
+        [props.cookie]
+    );
     const [URL, setURL] = useState<string>();
     const URLParts = useMemo<string[]>(
         () => [
@@ -15,12 +24,6 @@ const VideoComponent = (props: props) => {
         ],
         []
     );
-    // const URLRegex = useMemo(
-    //     () =>
-    //         // eslint-disable-next-line no-useless-escape
-    //         /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
-    //     []
-    // );
 
     useEffect(() => {
         props.data
@@ -34,15 +37,11 @@ const VideoComponent = (props: props) => {
                         res.videoId +
                         URLParts[2]
                 );
-
-                // const matchArr = res.match(URLRegex);
-                // if (!matchArr) throw new Error("No URL specified");
-                // setURL(matchArr[0]);
             })
             .catch((err) => console.error(err));
     }, [props.data, URLParts]);
 
-    return (
+    return allowShow ? (
         <div className="iframe-container">
             <iframe
                 width=""
@@ -54,6 +53,12 @@ const VideoComponent = (props: props) => {
                 allowFullScreen
                 className="iframe-video"
             ></iframe>
+        </div>
+    ) : (
+        <div className="bg-white p-5 rounded">
+            <p className="m-0 text-center">
+                Please accept necessary cookies to view Video
+            </p>
         </div>
     );
 };

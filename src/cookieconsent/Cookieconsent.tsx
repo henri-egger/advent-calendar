@@ -1,11 +1,16 @@
 import { useEffect } from "react";
-import options from "./cookieconsentOptions";
 import "vanilla-cookieconsent";
+import options from "./cookieconsentOptions";
+import { cookie } from "./types";
 
-export default function CookieConsent() {
+type props = {
+    setCookie: React.Dispatch<React.SetStateAction<cookie>>;
+};
+
+export default function CookieConsent(props: props) {
     useEffect(() => {
         options.onAccept = (cookie: any) => {
-            console.log("onAccept fired with: ", cookie);
+            props.setCookie(cookie);
         };
 
         if (!document.getElementById("cc--main")) {
