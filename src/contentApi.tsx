@@ -3,15 +3,6 @@ import VideoComponent from "./contentComponents/VideoComponent";
 import MDComponent from "./contentComponents/MDComponent";
 import { cookie } from "./cookieconsent/types";
 
-// Helper function to convert a blob to base64DataURL
-// async function toDataURL(blob: Blob): Promise<string> {
-//     return new Promise((resolve, _) => {
-//         const reader = new FileReader();
-//         reader.onloadend = () => resolve(reader.result as string);
-//         reader.readAsDataURL(blob);
-//       });
-// }
-
 // prettier-ignore
 const contentRenderers: Record<
     string,
