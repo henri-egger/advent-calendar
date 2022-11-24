@@ -93,3 +93,9 @@ $secondary: rgb(255, 230, 130);
     background-color: transparent !important;
     border: none !important;
 }
+
+.md-container {
+    img {
+        max-width: 100%;
+    }
+}

@@ -23,7 +23,10 @@ const MDComponent = (props: props) => {
     }, [props.data]);
 
     return (
-        <div dangerouslySetInnerHTML={{ __html: sanitized as string }}></div>
+        <div
+            className="bg-white rounded md-container py-2"
+            dangerouslySetInnerHTML={{ __html: sanitized as string }}
+        ></div>
     );
 };
 
