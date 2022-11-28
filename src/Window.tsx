@@ -8,12 +8,19 @@ type props = {
 
 const Window = (props: props) => {
     const [shouldWiggle, setShouldWiggle] = useState(false);
+    const [shouldClick, setShouldClick] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
     // Trigger for wiggle animation
     const triggerWiggle = () => {
-        if (shouldWiggle) setShouldWiggle(false);
+        setShouldWiggle(false);
         setTimeout(() => setShouldWiggle(true), 0);
+    };
+
+    // Trigger for click animation
+    const triggerClick = () => {
+        setShouldClick(false);
+        setTimeout(() => setShouldClick(true), 0);
     };
 
     // Creating a new date with current year, month december and day equal to index of window,
@@ -25,8 +32,8 @@ const Window = (props: props) => {
             props.currentDay.getDate() === day.getDate() &&
             props.currentDay.getMonth() === day.getMonth()
         ) {
+            triggerClick();
             props.modalShow();
-            setIsOpen(true);
         } else {
             triggerWiggle();
         }
@@ -44,19 +51,16 @@ const Window = (props: props) => {
     return (
         <div className="col px-xl-4">
             <div
-                className={`back-window ${
-                    shouldWiggle && !isOpen ? "wiggle" : ""
-                } rounded-1 bg-secondary cursor-pointer`}
+                //prettier-ignore
+                className={`
+                    window py-4 text-center text-white rounded cursor-pointer
+                    ${isOpen ? " open " : " "}
+                    ${shouldWiggle ? " wiggle " : " "}
+                    ${shouldClick ? " click " : " "}
+                `}
                 onClick={() => handleClick()}
             >
-                <div
-                    className={`window p-4 ${
-                        isOpen ? "open" : ""
-                    } text-center text-white rounded-1 bg-primary`}
-                    onClick={() => handleClick()}
-                >
-                    <h3 className="m-0">{props.index}</h3>
-                </div>
+                <h3 className="m-0">{props.index}</h3>
             </div>
         </div>
     );

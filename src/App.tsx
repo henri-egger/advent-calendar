@@ -57,7 +57,7 @@ const App = () => {
                     ></button>
                 </Modal.Header>
                 <Modal.Body className="p-0">
-                    <div className="row">{contentComponent}</div>
+                    <div className="row px-3 px-sm-0">{contentComponent}</div>
                 </Modal.Body>
             </Modal>
 

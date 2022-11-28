@@ -15,36 +15,32 @@ $secondary: rgb(255, 230, 130);
     background-position: center;
     width: 100% !important;
     height: 100vh !important;
-}
+    background-image: url("../img/idm07326.jpg");
 
-.window {
-    transform-origin: left;
-    transition: all 0.5s ease-in-out;
-
-    &.open {
-        // Door opening effect
-        transform: perspective(1200px) translateZ(0px) translateX(0px)
-            translateY(0px) rotateY(-115deg);
-        box-shadow: 5px 0px 12px 2px rgb(0 0 0 / 20%);
-
-        h3 {
-            color: transparent;
-        }
+    @media (max-width: 576px) {
+        background-image: url("../img/L_Guadagnini_pzaWaltherPlatz.jpg");
     }
 }
 
-.back-window {
-    transition: all 0.5s ease-in-out;
+.window {
+    border: 3px dashed #ffffff;
 
-    &:has(> .window.open) {
-        box-shadow: 0 0 15px $secondary;
+    &.open {
+        border-color: rgba(255, 255, 255, 0.5);
+
+        h3 {
+            color: rgba(255, 255, 255, 0.5);
+        }
+    }
+
+    @media (max-width: 576px) {
+        border-width: 2px;
     }
 }
 
 .wiggle {
-    animation-name: wiggle;
     animation-duration: 500ms;
-    transform-origin: 50% 50%;
+    animation-name: wiggle;
 }
 
 @keyframes wiggle {
@@ -65,6 +61,20 @@ $secondary: rgb(255, 230, 130);
     }
     100% {
         transform: rotate(0deg);
+    }
+}
+
+.click {
+    animation-duration: 400ms;
+    animation-name: click;
+}
+
+@keyframes click {
+    50% {
+        transform: scale(90%);
+    }
+    100% {
+        transform: scale(100%)
     }
 }
 
@@ -95,7 +105,31 @@ $secondary: rgb(255, 230, 130);
 }
 
 .md-container {
-    img {
+    // img {
+    //     display: block;
+    //     max-width: 100%;
+    //     margin: 0 auto; // TODO
+
+    //     &:has(+ img) {
+    //         display: inline;
+    //         margin-right: 0;
+    //     }
+
+    //     & + img {
+    //         display: inline;
+    //         margin-left: 0;
+    //     }
+    // }
+
+    p:has(> img) {
         max-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            max-width: 100%;
+            padding: 0 1rem;
+        }
     }
 }
