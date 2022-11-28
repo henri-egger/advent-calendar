@@ -18,9 +18,13 @@ const contentRenderers: Record<
         (data, index) => <MDComponent data={data} index={index} />,
     "text/markdown; charset=UTF-8":
         (data, index) => <MDComponent data={data} index={index} />,
+    "text/markdown; charset=utf-8":
+        (data, index) => <MDComponent data={data} index={index} />,
     "application/json": 
         (data, index, cookie) => <VideoComponent data={data} index={index} cookie={cookie} />,
     "application/json; charset=UTF-8": 
+        (data, index, cookie) => <VideoComponent data={data} index={index} cookie={cookie} />,
+    "application/json; charset=utf-8": 
         (data, index, cookie) => <VideoComponent data={data} index={index} cookie={cookie} />,
 };
 
