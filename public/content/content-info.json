@@ -1,7 +1,10 @@
 {
     "1": "youtube-video.json",
     "2": "youtube-video.json",
-    "3": "2022_Adventskalender-Spiele_Watten.md",
+    "3": {
+        "contentURL": "2022_Adventskalender-Spiele_Watten.md",
+        "customStyleURL": "style.json"
+    },
     "4": "",
     "5": "",
     "6": "",

@@ -2,8 +2,14 @@ import ImageComponent from "./contentComponents/ImageComponent";
 import VideoComponent from "./contentComponents/VideoComponent";
 import MDComponent from "./contentComponents/MDComponent";
 import { cookie } from "./cookieconsent/types";
+import React from "react";
 
 const contentInfoURL = "content/content-info.json";
+
+type contentInfo = Record<
+    string,
+    string | { contentURL: string; customStyleURL: string }
+>;
 
 const contentInfoOptions: RequestInit = {
     method: "GET",
@@ -16,63 +22,43 @@ const contentOptions: RequestInit = {
     method: "GET",
 };
 
+const customStyleOptions: RequestInit = {
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json",
+    },
+};
+
 // prettier-ignore
 function getContentComponent(
     contentType: string
-): (data: Response, index: number, cookie: cookie) => JSX.Element {
+): (data: Response, index: number, cookie: cookie, customStyle: Object) => JSX.Element {
     switch (contentType) {
         case "image/gif":
         case "image/jpeg":
         case "image/png":
-            return (data, index) => (
-                <ImageComponent data={data} index={index} />
+            return (data, index, cookie, customStyle) => (
+                <ImageComponent res={data} index={index} />
             );
 
         case "text/markdown":
         case "text/markdown; charset=UTF-8":
         case "text/markdown; charset=utf-8":
-            return (data, index) => (
-                <MDComponent data={data} index={index} />
+            return (data, index, cookie, customStyle) => (
+                <MDComponent res={data} index={index} customStyle={customStyle} />
             );
 
         case "application/json":
         case "application/json; charset=UTF-8":
         case "application/json; charset=utf-8":
-            return (data, index, cookie) => (
-                <VideoComponent data={data} index={index} cookie={cookie} />
+            return (data, index, cookie, customStyle) => (
+                <VideoComponent res={data} index={index} cookie={cookie} />
             );
 
         default:
             throw new Error(`Content-Type ${contentType} unknown`);
     }
 }
-
-// // prettier-ignore
-// const contentRenderers: Record<
-//     string,
-//     (data: Response, index: number, cookie: cookie) => JSX.Element
-// > = {
-//     "image/gif":
-//         (data, index) => <ImageComponent data={data} index={index} />,
-//     "image/jpeg":
-//         (data, index) => <ImageComponent data={data} index={index} />,
-//     "image/png":
-//         (data, index) => <ImageComponent data={data} index={index} />,
-//     "text/markdown":
-//         (data, index) => <MDComponent data={data} index={index} />,
-//     "text/markdown; charset=UTF-8":
-//         (data, index) => <MDComponent data={data} index={index} />,
-//     "text/markdown; charset=utf-8":
-//         (data, index) => <MDComponent data={data} index={index} />,
-//     "application/json":
-//         (data, index, cookie) => <VideoComponent data={data} index={index} cookie={cookie} />,
-//     "application/json; charset=UTF-8":
-//         (data, index, cookie) => <VideoComponent data={data} index={index} cookie={cookie} />,
-//     "application/json; charset=utf-8":
-//         (data, index, cookie) => <VideoComponent data={data} index={index} cookie={cookie} />,
-// };
-
-// const validTypes: string[] = Object.keys(contentRenderers);
 
 export default async function loadContentComponent(
     currentDay: Date,
@@ -82,23 +68,49 @@ export default async function loadContentComponent(
 
     // Fetching content info (urls)
     const contentInfoRes = await fetch(contentInfoURL, contentInfoOptions);
-    const contentInfo: Record<string, string> = await contentInfoRes.json();
+    const contentInfo: contentInfo = await contentInfoRes.json();
 
     if (!contentInfo[index.toString()])
         throw new Error(`Content URL for day ${index} not specified`);
 
-    const contentURL =
-        "content/" + index.toString() + "/" + contentInfo[index.toString()];
+    // Extracting URLs
+    let contentURL: string | null = null;
+    let customStyleURL: string | null = null;
 
-    // Fetching the actual content
-    const contentData = await fetch(contentURL, contentOptions);
-    const contentType = contentData.headers.get("Content-Type") as string;
+    if (typeof contentInfo[index.toString()] === "string") {
+        contentURL =
+            "content/" + index.toString() + "/" + contentInfo[index.toString()];
+    } else {
+        contentURL =
+            "content/" +
+            index.toString() +
+            "/" +
+            (contentInfo[index.toString()] as any).contentURL;
+        customStyleURL =
+            "content/" +
+            index.toString() +
+            "/" +
+            (contentInfo[index.toString()] as any).customStyleURL;
+    }
 
-    // Selecting the corrisponding component renderer from the above record
-    // const renderContentComponent = contentRenderers[contentType];
+    // Fetching the actual content (in parallel if customStyle)
+    let contentRes: Response | null = null;
+    let customStyle: React.CSSProperties | null = null;
+
+    if (!customStyleURL) {
+        contentRes = await fetch(contentURL, contentOptions);
+    } else {
+        const responses = await Promise.all([
+            fetch(contentURL, contentOptions),
+            fetch(customStyleURL, customStyleOptions).then((res) => res.json()),
+        ]);
+        contentRes = responses[0];
+        customStyle = responses[1] as React.CSSProperties;
+    }
 
     // Selecting the corrisponding component renderer
+    const contentType = contentRes.headers.get("Content-Type") as string;
     const contentComponent = getContentComponent(contentType);
 
-    return contentComponent(contentData, index, cookie);
+    return contentComponent(contentRes, index, cookie, customStyle ?? {});
 }

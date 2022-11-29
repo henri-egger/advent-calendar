@@ -2,7 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import { cookie } from "../cookieconsent/types";
 
 type props = {
-    data: Response;
+    res: Response;
     index: number;
     cookie: cookie;
 };
@@ -26,7 +26,7 @@ const VideoComponent = (props: props) => {
     );
 
     useEffect(() => {
-        props.data
+        props.res
             .clone()
             .json()
             .then((res) => {
@@ -39,7 +39,7 @@ const VideoComponent = (props: props) => {
                 );
             })
             .catch((err) => console.error(err));
-    }, [props.data, URLParts]);
+    }, [props.res, URLParts]);
 
     return allowShow ? (
         <div className="iframe-container">

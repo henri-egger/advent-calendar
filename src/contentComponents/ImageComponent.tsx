@@ -1,10 +1,10 @@
 type props = {
-    data: Response;
+    res: Response;
     index: number;
 };
 
 const ImageComponent = (props: props) => {
-    return <img src={props.data.url} alt="Advent"></img>;
+    return <img src={props.res.url} alt="Advent"></img>;
 };
 
 export default ImageComponent;

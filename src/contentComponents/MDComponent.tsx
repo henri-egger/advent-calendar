@@ -3,8 +3,9 @@ import { marked } from "marked";
 import sanitizer from "dompurify";
 
 type props = {
-    data: Response;
+    res: Response;
     index: number;
+    customStyle: React.CSSProperties;
 };
 
 const MDComponent = (props: props) => {
@@ -12,7 +13,7 @@ const MDComponent = (props: props) => {
 
     // Parsing the markdown plain text to html and sanitize it
     useEffect(() => {
-        props.data
+        props.res
             .clone()
             .text()
             .then((res) => {
@@ -20,11 +21,12 @@ const MDComponent = (props: props) => {
                 setSanitized(sanitizer.sanitize(html));
             })
             .catch((err) => console.error(err));
-    }, [props.data]);
+    }, [props.res]);
 
     return (
         <div
-            className="bg-white rounded md-container py-2"
+            className="rounded md-container py-2"
+            style={props.customStyle}
             dangerouslySetInnerHTML={{ __html: sanitized as string }}
         ></div>
     );

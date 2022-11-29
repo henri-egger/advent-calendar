@@ -13,8 +13,10 @@ const Window = (props: props) => {
 
     // Trigger for wiggle animation
     const triggerWiggle = () => {
-        setShouldWiggle(false);
-        setTimeout(() => setShouldWiggle(true), 0);
+        if (!isOpen) {
+            setShouldWiggle(false);
+            setTimeout(() => setShouldWiggle(true), 0);
+        }
     };
 
     // Trigger for click animation
