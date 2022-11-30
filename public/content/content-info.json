@@ -1,10 +1,13 @@
 {
-    "1": "youtube-video.json",
-    "2": "youtube-video.json",
-    "3": {
-        "contentURL": "2022_Adventskalender-Spiele_Watten.md",
+    "1": {
+        "contentURL": "01_Adventskranz_selbst_basteln.md",
         "customStyleURL": "style.json"
     },
+    "2": {
+        "contentURL": "02_Herbstgedicht_Lanthaler.md",
+        "customStyleURL": "style.json"
+    },
+    "3": "",
     "4": "",
     "5": "",
     "6": "",
