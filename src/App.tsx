@@ -12,8 +12,8 @@ const App = () => {
     const [modalShow, setModalShow] = useState(false);
     const [contentComponent, setContentComponent] = useState<JSX.Element>();
 
-    const currentDay = useMemo(() => new Date(), []);
-    // const currentDay = useMemo(() => new Date(2022, 11, 3), []);
+    // const currentDay = useMemo(() => new Date(), []);
+    const currentDay = useMemo(() => new Date(2022, 11, 3), []);
 
     // Async loading content component of current day into state of app component
     useEffect(() => {
@@ -39,6 +39,18 @@ const App = () => {
                         currentDay={currentDay}
                     />
                 </div>
+                <footer className="col row justify-content-center pb-3 pb-sm-0">
+                    <small className="col text-white text-center">
+                        &copy; 2022 Henri Egger |&nbsp;
+                        <a
+                            className="text-white"
+                            href="https://www.moosbauer.com/en/f/credits"
+                            target="_blank"
+                        >
+                            Credits
+                        </a>
+                    </small>
+                </footer>
             </Background>
 
             <Modal
