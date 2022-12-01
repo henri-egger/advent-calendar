@@ -105,21 +105,12 @@ $secondary: rgb(255, 230, 130);
 }
 
 .md-container {
-    // img {
-    //     display: block;
-    //     max-width: 100%;
-    //     margin: 0 auto; // TODO
 
-    //     &:has(+ img) {
-    //         display: inline;
-    //         margin-right: 0;
-    //     }
+    background-color: #ffffff;
 
-    //     & + img {
-    //         display: inline;
-    //         margin-left: 0;
-    //     }
-    // }
+    img {
+        max-width: 100%;
+    }
 
     p:has(> img) {
         max-width: 100%;
@@ -128,14 +119,41 @@ $secondary: rgb(255, 230, 130);
         justify-content: center;
 
         img {
-            max-width: 100%;
+            flex: 1 1 0;
             padding: 0 1rem;
+
+            // Keeps items within parent
+            min-width: 0;
         }
     }
 
-    background-color: #ffffff;
+    table {
+        table-layout: fixed;
+        width: 100%;
+        tr {
+            max-width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+    
+            th,
+            td {
+                max-width: 100%;
+                flex: 1 1 0;
+                padding: 0 1rem;
+    
+                // Keeps items within parent
+                min-width: 0;
+    
+                text-align: center;
+                font-weight: normal;
+            }
+        }
+    }
 
-    h3 {
-        padding-bottom: 1.5rem;
+    h3,
+    table,
+    tr {
+        margin-bottom: 1.5rem;
     }
 }

@@ -44,6 +44,8 @@ function getContentComponent(
         case "text/markdown":
         case "text/markdown; charset=UTF-8":
         case "text/markdown; charset=utf-8":
+        case "text/markdown;charset=UTF-8":
+        case "text/markdown;charset=utf-8":
             return (data, index, cookie, customStyle) => (
                 <MDComponent res={data} index={index} customStyle={customStyle} />
             );
@@ -51,6 +53,8 @@ function getContentComponent(
         case "application/json":
         case "application/json; charset=UTF-8":
         case "application/json; charset=utf-8":
+        case "application/json;charset=UTF-8":
+        case "application/json;charset=utf-8":
             return (data, index, cookie, customStyle) => (
                 <VideoComponent res={data} index={index} cookie={cookie} />
             );

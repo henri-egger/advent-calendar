@@ -7,7 +7,10 @@
         "contentURL": "02_Herbstgedicht_Lanthaler.md",
         "customStyleURL": "style.json"
     },
-    "3": "",
+    "3": {
+        "contentURL": "03_Weihnachtsactivity.md",
+        "customStyleURL": "style.json"
+    },
     "4": "",
     "5": "",
     "6": "",

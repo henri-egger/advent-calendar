@@ -13,7 +13,7 @@ const App = () => {
     const [contentComponent, setContentComponent] = useState<JSX.Element>();
 
     const currentDay = useMemo(() => new Date(), []);
-    // const currentDay = useMemo(() => new Date(2022, 11, 1), []);
+    // const currentDay = useMemo(() => new Date(2022, 11, 3), []);
 
     // Async loading content component of current day into state of app component
     useEffect(() => {
