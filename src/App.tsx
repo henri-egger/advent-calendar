@@ -12,8 +12,17 @@ const App = () => {
     const [modalShow, setModalShow] = useState(false);
     const [contentComponent, setContentComponent] = useState<JSX.Element>();
 
-    const currentDay = useMemo(() => new Date(), []);
-    // const currentDay = useMemo(() => new Date(2022, 11, 3), []);
+    const currentDay = import.meta.env.PROD
+        ? useMemo(() => new Date(), [])
+        : useMemo(
+              () =>
+                  new Date(
+                      2022,
+                      11,
+                      Number.parseInt(import.meta.env.VITE_TESTING_DAY) || 1
+                  ),
+              []
+          );
 
     // Async loading content component of current day into state of app component
     useEffect(() => {
