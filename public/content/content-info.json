@@ -11,7 +11,10 @@
         "contentURL": "03_Weihnachtsactivity.md",
         "customStyleURL": "style.json"
     },
-    "4": "",
+    "4": {
+        "contentURL": "04_Tradition_Barbarazweige.md",
+        "customStyleURL": "style.json"
+    },
     "5": "",
     "6": "",
     "7": "",
