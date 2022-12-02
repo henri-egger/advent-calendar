@@ -140,13 +140,14 @@ $secondary: rgb(255, 230, 130);
             td {
                 max-width: 100%;
                 flex: 1 1 0;
-                padding: 0 1rem;
+                padding: 0 0.4rem;
     
                 // Keeps items within parent
                 min-width: 0;
     
                 text-align: center;
                 font-weight: normal;
+                overflow-wrap: break-word;
             }
         }
     }
