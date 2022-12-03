@@ -15,8 +15,14 @@
         "contentURL": "04_Tradition_Barbarazweige.md",
         "customStyleURL": "style.css"
     },
-    "5": "",
-    "6": "",
+    "5": {
+        "contentURL": "05_Nikolausumzug_Stilfs.md",
+        "customStyleURL": "style.css"
+    },
+    "6": {
+        "contentURL": "06_Nikolaus.md",
+        "customStyleURL": "style.css"
+    },
     "7": "",
     "8": "",
     "9": "",
