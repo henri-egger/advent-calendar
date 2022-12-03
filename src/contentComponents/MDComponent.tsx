@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { marked } from "marked";
 import sanitizer from "dompurify";
 
 type props = {
     res: Response;
     index: number;
-    customStyle: React.CSSProperties;
+    customStyle: string;
 };
 
 const MDComponent = (props: props) => {
@@ -24,11 +24,13 @@ const MDComponent = (props: props) => {
     }, [props.res]);
 
     return (
-        <div
-            className="rounded md-container py-2"
-            style={props.customStyle}
-            dangerouslySetInnerHTML={{ __html: sanitized as string }}
-        ></div>
+        <>
+            <style>{props.customStyle}</style>
+            <div
+                className="rounded md-container py-2"
+                dangerouslySetInnerHTML={{ __html: sanitized as string }}
+            ></div>
+        </>
     );
 };
 

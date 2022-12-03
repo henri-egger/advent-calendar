@@ -1,0 +1,8 @@
+.md-container {
+    background-color: #fce8f6;
+}
+
+img[alt=barbaralegende] {
+    max-height: 20rem;
+    object-fit: contain;
+}

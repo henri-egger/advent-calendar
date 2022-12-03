@@ -25,14 +25,14 @@ const contentOptions: RequestInit = {
 const customStyleOptions: RequestInit = {
     method: "GET",
     headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "text/css",
     },
 };
 
 // prettier-ignore
 function getContentComponent(
     contentType: string
-): (data: Response, index: number, cookie: cookie, customStyle: Object) => JSX.Element {
+): (data: Response, index: number, cookie: cookie, customStyle: string) => JSX.Element {
     switch (contentType) {
         case "image/gif":
         case "image/jpeg":
@@ -99,22 +99,20 @@ export default async function loadContentComponent(
 
     // Fetching the actual content (in parallel if customStyle)
     let contentRes: Response | null = null;
-    let customStyle: React.CSSProperties | null = null;
+    let customStyle: string | null = null;
 
     if (!customStyleURL) {
         contentRes = await fetch(contentURL, contentOptions);
     } else {
-        const responses = await Promise.all([
+        [contentRes, customStyle] = await Promise.all([
             fetch(contentURL, contentOptions),
-            fetch(customStyleURL, customStyleOptions).then((res) => res.json()),
+            fetch(customStyleURL, customStyleOptions).then((res) => res.text()),
         ]);
-        contentRes = responses[0];
-        customStyle = responses[1] as React.CSSProperties;
     }
 
     // Selecting the corrisponding component renderer
     const contentType = contentRes.headers.get("Content-Type") as string;
     const contentComponent = getContentComponent(contentType);
 
-    return contentComponent(contentRes, index, cookie, customStyle ?? {});
+    return contentComponent(contentRes, index, cookie, customStyle ?? "");
 }

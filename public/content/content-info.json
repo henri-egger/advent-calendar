@@ -1,19 +1,19 @@
 {
     "1": {
         "contentURL": "01_Adventskranz_selbst_basteln.md",
-        "customStyleURL": "style.json"
+        "customStyleURL": "style.css"
     },
     "2": {
         "contentURL": "02_Herbstgedicht_Lanthaler.md",
-        "customStyleURL": "style.json"
+        "customStyleURL": "style.css"
     },
     "3": {
         "contentURL": "03_Weihnachtsactivity.md",
-        "customStyleURL": "style.json"
+        "customStyleURL": "style.css"
     },
     "4": {
         "contentURL": "04_Tradition_Barbarazweige.md",
-        "customStyleURL": "style.json"
+        "customStyleURL": "style.css"
     },
     "5": "",
     "6": "",
