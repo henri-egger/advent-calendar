@@ -1,0 +1,20 @@
+.md-container {
+    background-color: #f7f5f0;
+}
+/* 
+th,
+td {
+    text-align: left !important;
+    align-self: baseline !important;
+}
+
+tr {
+    margin: 0 !important;
+}
+
+@media (max-width: 576px) {
+    tr {
+        flex-direction: column !important;
+    }
+}
+*/

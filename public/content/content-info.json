@@ -23,7 +23,10 @@
         "contentURL": "06_Nikolaus.md",
         "customStyleURL": "style.css"
     },
-    "7": "",
+    "7": {
+        "contentURL": "07_Rezept_Zelten.md",
+        "customStyleURL": "style.css"
+    },
     "8": "",
     "9": "",
     "10": "",
