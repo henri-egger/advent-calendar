@@ -27,9 +27,15 @@
         "contentURL": "07_Rezept_Zelten.md",
         "customStyleURL": "style.css"
     },
-    "8": "",
-    "9": "",
-    "10": "",
+    "8": "08_weihnachtslieder-buchstabensalat-eraten.jpg",
+    "9": {
+        "contentURL": "09_Watten.md",
+        "customStyleURL": "style.css"
+    },
+    "10": {
+        "contentURL": "10_Weihnachtsgeschichte.md",
+        "customStyleURL": "style.css"
+    },
     "11": "",
     "12": "",
     "13": "",
