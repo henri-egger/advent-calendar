@@ -36,7 +36,10 @@
         "contentURL": "10_Weihnachtsgeschichte.md",
         "customStyleURL": "style.css"
     },
-    "11": "",
+    "11": {
+        "contentURL": "11_Südtiroler_Muas_Rezept.md",
+        "customStyleURL": "style.css"
+    },
     "12": "",
     "13": "",
     "14": "",
