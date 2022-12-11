@@ -40,7 +40,10 @@
         "contentURL": "11_Südtiroler_Muas_Rezept.md",
         "customStyleURL": "style.css"
     },
-    "12": "",
+    "12": {
+        "contentURL": "12_Gedicht_Bozner_Seligkeit.md",
+        "customStyleURL": "style.css"
+    },
     "13": "",
     "14": "",
     "15": "",
