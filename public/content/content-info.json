@@ -44,7 +44,10 @@
         "contentURL": "12_Gedicht_Bozner_Seligkeit.md",
         "customStyleURL": "style.css"
     },
-    "13": "",
+    "13": {
+        "contentURL": "13_Wir_sind_Walcrucchi.md",
+        "customStyleURL": "style.css"
+    },
     "14": "",
     "15": "",
     "16": "",
