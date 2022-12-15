@@ -2,7 +2,6 @@ import ImageComponent from "./contentComponents/ImageComponent";
 import VideoComponent from "./contentComponents/VideoComponent";
 import MDComponent from "./contentComponents/MDComponent";
 import { cookie } from "./cookieconsent/types";
-import React from "react";
 
 const contentInfoURL = "content/content-info.json";
 
