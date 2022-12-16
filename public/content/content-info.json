@@ -60,7 +60,10 @@
         "contentURL": "16_Suedtirolerisch_leicht_gemacht.md",
         "customStyleURL": "style.css"
     },
-    "17": "",
+    "17": {
+        "contentURL": "17_Klöckeln_Text.md",
+        "customStyleURL": "style.css"
+    },
     "18": "",
     "19": "",
     "20": "",
