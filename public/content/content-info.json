@@ -64,7 +64,10 @@
         "contentURL": "17_Klöckeln_Text.md",
         "customStyleURL": "style.css"
     },
-    "18": "",
+    "18": {
+        "contentURL": "18_Adventskalender_Spiele.md",
+        "customStyleURL": "style.css"
+    },
     "19": "",
     "20": "",
     "21": "",
