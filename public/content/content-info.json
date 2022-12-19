@@ -72,9 +72,24 @@
         "contentURL": "19_Panettone.md",
         "customStyleURL": "style.css"
     },
-    "20": "",
-    "21": "",
-    "22": "",
-    "23": "",
-    "24": ""
+    "20": {
+        "contentURL": "20_Gedicht_Anna_Lanthaler.md",
+        "customStyleURL": "style.css"
+    },
+    "21": {
+        "contentURL": "21_Suedtiroler_Quiz.md",
+        "customStyleURL": "style.css"
+    },
+    "22": {
+        "contentURL": "22_Gerstensalat_mit_Suedtiroler_Speck.md",
+        "customStyleURL": "style.css"
+    },
+    "23": {
+        "contentURL": "23_Fragen_an_sich_selbst.md",
+        "customStyleURL": "style.css"
+    },
+    "24": {
+        "contentURL": "24_Weihnachtsgeschichte_Krippe.md",
+        "customStyleURL": "style.css"
+    }
 }
