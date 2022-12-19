@@ -68,7 +68,10 @@
         "contentURL": "18_Adventskalender_Spiele.md",
         "customStyleURL": "style.css"
     },
-    "19": "",
+    "19": {
+        "contentURL": "19_Panettone.md",
+        "customStyleURL": "style.css"
+    },
     "20": "",
     "21": "",
     "22": "",
